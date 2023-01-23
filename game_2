@@ -1,0 +1,81 @@
+import random
+
+def start_game():
+    print("Welcome to the Extreme Survival text adventure game!")
+    print("You find yourself stranded in a deserted island, the only thing you have is a knife.")
+    print("You can see a path leading to the jungle and a path leading to the beach.")
+    choice = input("Which direction do you want to go? (jungle/beach) ")
+    if choice == "jungle":
+        jungle()
+    elif choice == "beach":
+        beach()
+    else:
+        print("Invalid choice. Please enter 'jungle' or 'beach'.")
+        start_game()
+
+def jungle():
+    print("You enter the dense jungle, the heat is suffocating and the humidity is high.")
+    print("You can hear strange noises coming from the bushes.")
+    choice = input("Do you want to investigate the noises? (yes/no) ")
+    if choice == "yes":
+        investigate()
+    elif choice == "no":
+        print("You decide to continue your journey deeper into the jungle.")
+        jungle()
+    else:
+        print("Invalid choice. Please enter 'yes' or 'no'.")
+        jungle()
+
+def investigate():
+    encounter = random.randint(1, 3)
+    if encounter == 1:
+        print("You come across a wild boar. It charges at you!")
+        fight_boar()
+    elif encounter == 2:
+        print("You find a freshwater stream. You can refill your canteen here.")
+        refill_canteen()
+    elif encounter == 3:
+        print("You find a poisonous snake. It bites you!")
+        snake_bite()
+
+def fight_boar():
+    attack = random.randint(1, 2)
+    if attack == 1:
+        print("You successfully kill the boar with your knife.")
+        print("You can now cook it and have a meal.")
+        jungle()
+    else:
+        print("The boar gores you with its tusks. You die.")
+        game_over()
+
+def refill_canteen():
+    print("You fill your canteen with fresh water.")
+    jungle()
+
+def snake_bite():
+    print("You receive a poisonous bite. You have limited time to find an antivenom.")
+    beach()
+
+def beach():
+    print("You reach the beach, the sun is setting and the waves are getting bigger.")
+    print("You can see a ship on the horizon.")
+    choice = input("Do you want to swim towards the ship? (yes/no) ")
+    if choice == "yes":
+        swim_to_ship()
+    elif choice == "no":
+        print("You decide to stay on the beach and wait for rescue.")
+        beach()
+    else:
+        print("Invalid choice. Please enter 'yes' or 'no'.")
+        beach()
+
+def swim_to_ship():
+    ship = random.randint(1, 2)
+    if ship == 1:
+        print("You successfully swim to the ship and are rescued.")
+        game_over()
+    else:
+        print("The ship is too far away and the current is too strong. You drown.")
+        game_over()
+
+def

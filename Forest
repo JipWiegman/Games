@@ -1,0 +1,48 @@
+def start_game():
+    print("Welcome to the text adventure game!")
+    print("You find yourself in a dark forest. You can see a path to the north and a path to the east.")
+    choice = input("Which direction do you want to go? (north/east) ")
+    if choice == "north":
+        print("You follow the path north and come across a clearing. In the center of the clearing is a cabin.")
+        cabin()
+    elif choice == "east":
+        print("You follow the path east and come across a river. You can see a boat by the riverbank.")
+        river()
+    else:
+        print("Invalid choice. Please enter 'north' or 'east'.")
+        start_game()
+
+def cabin():
+    print("You approach the cabin. You can see smoke coming out of the chimney.")
+    choice = input("Do you want to enter the cabin? (yes/no) ")
+    if choice == "yes":
+        print("You enter the cabin and find a warm fire in the fireplace. You also find a key on the mantelpiece.")
+        print("You take the key and leave the cabin.")
+        key_obtained = True
+        start_game()
+    elif choice == "no":
+        print("You decide not to enter the cabin and return to the forest.")
+        start_game()
+    else:
+        print("Invalid choice. Please enter 'yes' or 'no'.")
+        cabin()
+
+def river():
+    print("You approach the river. You can see a boat by the riverbank.")
+    choice = input("Do you want to take the boat? (yes/no) ")
+    if choice == "yes":
+        if key_obtained:
+            print("You use the key to unlock the boat and set off down the river.")
+            print("You have completed the game! Congratulations!")
+        else:
+            print("The boat is locked and you don't have a key. You return to the forest.")
+            start_game()
+    elif choice == "no":
+        print("You decide not to take the boat and return to the forest.")
+        start_game()
+    else:
+        print("Invalid choice. Please enter 'yes' or 'no'.")
+        river()
+
+key_obtained = False
+start_game()
